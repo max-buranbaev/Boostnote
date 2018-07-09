@@ -11,6 +11,7 @@ import crypto from 'crypto'
 import consts from 'browser/lib/consts'
 import fs from 'fs'
 const { ipcRenderer } = require('electron')
+import normalizeEditorFontFamily from 'browser/lib/normalizeEditorFontFamily'
 
 CodeMirror.modeURL = '../node_modules/codemirror/mode/%N/%N.js'
 
@@ -573,7 +574,7 @@ export default class CodeEditor extends React.Component {
         ref='root'
         tabIndex='-1'
         style={{
-          fontFamily: fontFamily.join(', '),
+          fontFamily,
           fontSize: fontSize,
           width: width,
           opacity: this.state.isReady ? '1' : '0'
